@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-void cycle(int *x, int *y, int *z);
+void cycle1(int *x, int *y, int *z);
+void cycle2(int **x, int **y, int **z);
 
 int main(void)
 {
@@ -23,9 +24,9 @@ int main(void)
     printf("\n");
     if (option == 1);
     else if (option == 2)
-        cycle(&x, &y, &z);
+        cycle1(&x, &y, &z);
     else if (option == 3)
-        cycle(&p, &q, &r);
+        cycle2(&p, &q, &r);
     else
     {
         printf("Invalid option\n");
@@ -39,9 +40,18 @@ int main(void)
     return 0;
 }
 
-void cycle(int *x, int *y, int *z)
+void cycle1(int *x, int *y, int *z)
 {
     int tmp;
+    tmp = *x;
+    *x = *y;
+    *y = *z;
+    *z = tmp;
+}
+
+void cycle2(int **x, int **y, int **z)
+{
+    int *tmp;
     tmp = *x;
     *x = *y;
     *y = *z;
